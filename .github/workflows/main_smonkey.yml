@@ -19,6 +19,7 @@ jobs:
           java-version: '17'
 
       - name: Create Application.yml
+      - uses: actions/checkout@v3
         run: |
             touch ./src/main/resources/application.properties
             echo "${{ secrets.APPLICATION }}" > ./src/main/resources/application.properties
