@@ -1,5 +1,7 @@
 package com.project.smonkey.domain.feed.service
 
+import com.project.smonkey.domain.feed.exception.NotMyFeedException
+import com.project.smonkey.domain.feed.facade.FeedFacade
 import com.project.smonkey.domain.feed.mapper.toFeedType
 import com.project.smonkey.domain.feed.payload.request.UpdateFeedRequest
 import com.project.smonkey.domain.user.facade.UserFacade
@@ -9,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional
 
 @Service
 class UpdateFeedService(
-    private val feedFacade: com.project.smonkey.domain.feed.facade.FeedFacade,
+    private val feedFacade: FeedFacade,
     private val userFacade: UserFacade
 ) {
 
@@ -23,7 +25,7 @@ class UpdateFeedService(
         val user = userFacade.getCurrentUser()
 
         if (feed.user != user) {
-            throw com.project.smonkey.domain.feed.exception.NotMyFeedException
+            throw NotMyFeedException
         }
 
         feed.update(

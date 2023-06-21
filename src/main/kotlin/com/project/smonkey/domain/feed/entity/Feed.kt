@@ -1,5 +1,6 @@
 package com.project.smonkey.domain.feed.entity
 
+import com.project.smonkey.domain.feed.enum.FeedType
 import com.project.smonkey.domain.user.entity.User
 import org.jetbrains.annotations.NotNull
 import org.springframework.data.annotation.CreatedDate
@@ -12,7 +13,7 @@ import javax.persistence.*
 class Feed(
     title: String,
     content: String,
-    category: com.project.smonkey.domain.feed.enum.FeedType,
+    category: FeedType,
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -42,7 +43,7 @@ class Feed(
     fun update(
         title: String,
         content: String,
-        category: com.project.smonkey.domain.feed.enum.FeedType,
+        category: FeedType,
     ) {
         this.title = title
         this.content = content

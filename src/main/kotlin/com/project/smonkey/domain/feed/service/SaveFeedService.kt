@@ -1,5 +1,7 @@
 package com.project.smonkey.domain.feed.service
 
+import com.project.smonkey.domain.feed.entity.Feed
+import com.project.smonkey.domain.feed.facade.FeedFacade
 import com.project.smonkey.domain.feed.mapper.toFeedType
 import com.project.smonkey.domain.feed.payload.request.SaveFeedRequest
 import com.project.smonkey.domain.user.facade.UserFacade
@@ -8,7 +10,7 @@ import org.springframework.stereotype.Service
 
 @Service
 class SaveFeedService(
-    private val feedFacade: com.project.smonkey.domain.feed.facade.FeedFacade,
+    private val feedFacade: FeedFacade,
     private val userFacade: UserFacade,
 ) {
 
@@ -19,7 +21,7 @@ class SaveFeedService(
         val user = userFacade.getCurrentUser()
 
         feedFacade.saveFeed(
-            com.project.smonkey.domain.feed.entity.Feed(
+            Feed(
                 user = user,
                 title = request.title,
                 content = request.content,

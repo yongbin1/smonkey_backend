@@ -1,10 +1,13 @@
 package com.project.smonkey.domain.feed.mapper
 
-internal fun String.toFeedType(): com.project.smonkey.domain.feed.enum.FeedType {
+import com.project.smonkey.domain.feed.enum.FeedType
+import com.project.smonkey.domain.feed.exception.FeedTypeNotExistException
 
-    for (feedType in com.project.smonkey.domain.feed.enum.FeedType.values()) {
+internal fun String.toFeedType(): FeedType {
+
+    for (feedType in FeedType.values()) {
         if (feedType.toString() == this) return feedType
     }
 
-    throw com.project.smonkey.domain.feed.exception.FeedTypeNotExistException
+    throw FeedTypeNotExistException
 }

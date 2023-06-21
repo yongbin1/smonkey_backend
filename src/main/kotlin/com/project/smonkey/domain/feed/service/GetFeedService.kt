@@ -1,5 +1,7 @@
 package com.project.smonkey.domain.feed.service
 
+import com.project.smonkey.domain.feed.enum.FeedType
+import com.project.smonkey.domain.feed.facade.FeedFacade
 import com.project.smonkey.domain.feed.mapper.toFeedType
 import com.project.smonkey.domain.feed.payload.response.GetFeedListResponse
 import com.project.smonkey.domain.feed.payload.response.GetFeedResponse
@@ -20,7 +22,7 @@ import org.springframework.stereotype.Service
  */
 @Service
 class GetFeedService(
-    private val feedFacade: com.project.smonkey.domain.feed.facade.FeedFacade,
+    private val feedFacade: FeedFacade,
     private val smonkeyFacade: SMonkeyFacade,
     private val userFacade: UserFacade,
     private val likeFacade: LikeFacade,
@@ -84,7 +86,7 @@ class GetFeedService(
 
         val feedList = feedFacade
             .getFeedAll()
-            .runIf(feedType != com.project.smonkey.domain.feed.enum.FeedType.ALL) {
+            .runIf(feedType != FeedType.ALL) {
                 filter {
                     it.category == feedType
                 }
