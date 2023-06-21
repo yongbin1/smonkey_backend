@@ -1,7 +1,6 @@
 package com.project.smonkey.domain.user.entity
 
 import java.time.LocalDateTime
-import javax.persistence.Column
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType
@@ -18,6 +17,7 @@ data class User(
     val price: Int,
     val smokingDate: LocalDateTime,
     val noSmokingDate: LocalDateTime,
+    val reason: String,
 ) {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

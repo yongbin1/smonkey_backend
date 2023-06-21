@@ -40,6 +40,7 @@ class SignUpService(
             price = request.price,
             smokingDate = request.smokingDate,
             noSmokingDate = request.noSmokingDate,
+            reason = request.reason
         )
 
         userRepository.save(user)
