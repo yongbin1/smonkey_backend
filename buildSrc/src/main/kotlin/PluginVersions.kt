@@ -10,7 +10,7 @@ object Plugin {
 }
 
 object PluginVersions {
-    const val PROJECT_VERSION = "0.0.1-SNAPSHOT"
+    const val PROJECT_VERSION = "0.0.1"
 
     const val SPRING_BOOT_VERSION = "2.7.1"
     const val DEPENDENCY_MANAGER_VERSION = "1.0.11.RELEASE"

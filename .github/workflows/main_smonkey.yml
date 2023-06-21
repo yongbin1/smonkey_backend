@@ -35,7 +35,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: java-app
-          path: '${{ github.workspace }}/build/libs/*.jar'
+          path: '${{ github.workspace }}/build/libs/SMonkey-0.0.1.jar'
 
   deploy:
     runs-on: ubuntu-latest
