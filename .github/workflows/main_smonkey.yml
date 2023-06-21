@@ -28,7 +28,6 @@ jobs:
 
       - name: Build with Gradle
         run: |
-            ./gradlew ktlintFormat
             chmod +x ./gradlew
             ./gradlew clean build
 

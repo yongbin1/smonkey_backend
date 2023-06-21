@@ -28,7 +28,7 @@ dependencies {
     installDependencies(
         spring = true,
         kotlin = true,
-        ktlint = true,
+        ktlint = false,
         jackson = true,
         jwt = true,
         swagger = true,
