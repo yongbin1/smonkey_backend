@@ -7,9 +7,12 @@ import com.saehyun.smonkey.domain.smonkey.service.GetSMonkeyService
 import com.saehyun.smonkey.domain.smonkey.service.MakeSMonkeyService
 import com.saehyun.smonkey.domain.smonkey.service.UpdateBackgroundColorService
 import com.saehyun.smonkey.global.payload.BaseResponse
+import io.swagger.annotations.Api
+import io.swagger.annotations.ApiOperation
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
 
+@Api(tags = ["캐릭터 API"], description = "캐릭터 API")
 @RequestMapping("/smonkey")
 @RestController
 class SMonkeyController(
@@ -18,6 +21,7 @@ class SMonkeyController(
     private val getSMonkeyService: GetSMonkeyService,
 ) {
 
+    @ApiOperation(value = "스몽키 만들기")
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     fun makeSMonkey(
@@ -28,6 +32,7 @@ class SMonkeyController(
         )
     }
 
+    @ApiOperation(value = "스몽키 배경색상 변경")
     @PatchMapping
     fun updateBackgroundColor(
         @RequestBody request: UpdateBackgroundColorRequest,
@@ -37,6 +42,7 @@ class SMonkeyController(
         )
     }
 
+    @ApiOperation(value = "내 스몽키 조회")
     @GetMapping
     fun getSMonkey(): BaseResponse<GetSMonkeyResponse> {
         return getSMonkeyService.getMonkey()

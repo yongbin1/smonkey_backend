@@ -18,7 +18,7 @@ class SwaggerConfig {
         .produces(getProduceContentTypes())
         .apiInfo(swaggerInfo())
         .select()
-        .apis(RequestHandlerSelectors.basePackage("com.colabear754.swagger_example.controllers"))
+        .apis(RequestHandlerSelectors.basePackage("com.saehyun.smonkey"))
         .paths(PathSelectors.any())
         .build()
         .useDefaultResponseMessages(false)

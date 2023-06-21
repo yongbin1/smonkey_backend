@@ -6,9 +6,12 @@ import com.saehyun.smonkey.domain.user.service.SignInService
 import com.saehyun.smonkey.domain.user.service.SignUpService
 import com.saehyun.smonkey.global.payload.BaseResponse
 import com.saehyun.smonkey.global.security.jwt.payload.TokenResponse
+import io.swagger.annotations.Api
+import io.swagger.annotations.ApiOperation
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
 
+@Api(tags = ["유저 API"], description = "유저 API")
 @RequestMapping("/user")
 @RestController
 class UserController(
@@ -16,6 +19,7 @@ class UserController(
     private val signInService: SignInService,
 ) {
 
+    @ApiOperation(value = "회원가입")
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     fun signUp(
@@ -26,6 +30,7 @@ class UserController(
         )
     }
 
+    @ApiOperation(value = "로그인")
     @PostMapping("/signin")
     fun signIn(
         @RequestBody request: SignInRequest,

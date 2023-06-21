@@ -9,9 +9,12 @@ import com.saehyun.smonkey.domain.feed.service.GetFeedService
 import com.saehyun.smonkey.domain.feed.service.SaveFeedService
 import com.saehyun.smonkey.domain.feed.service.UpdateFeedService
 import com.saehyun.smonkey.global.payload.BaseResponse
+import io.swagger.annotations.Api
+import io.swagger.annotations.ApiOperation
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
 
+@Api(tags = ["글 API"], description = "글 API")
 @RequestMapping("/feed")
 @RestController
 class FeedController(
@@ -21,6 +24,7 @@ class FeedController(
     private val getFeedService: GetFeedService,
 ) {
 
+    @ApiOperation(value = "글 쓰기")
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     fun saveFeed(
@@ -33,6 +37,7 @@ class FeedController(
         )
     }
 
+    @ApiOperation(value = "글 수정")
     @PatchMapping("/{feed-id}/update")
     fun updateFeed(
         @PathVariable("feed-id") feedId: Long,
@@ -46,6 +51,7 @@ class FeedController(
         )
     }
 
+    @ApiOperation(value = "글 삭제")
     @DeleteMapping("/{feed-id}")
     fun deleteFeed(
         @PathVariable("feed-id") feedId: Long,
@@ -55,6 +61,7 @@ class FeedController(
         )
     }
 
+    @ApiOperation(value = "글 상세 조회")
     @GetMapping("/{feed-id}")
     fun getFeed(
         @PathVariable("feed-id") feedId: Long,
@@ -64,6 +71,7 @@ class FeedController(
         )
     }
 
+    @ApiOperation(value = "글 목록")
     @GetMapping("/list")
     fun getFeedList(
         @RequestParam("category") category: String,
