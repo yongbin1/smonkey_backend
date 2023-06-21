@@ -7,5 +7,5 @@ import org.springframework.boot.runApplication
 class SMonkeyApplication
 
 fun main(args: Array<String>) {
-    runApplication<SMonkeyApplication>(*args)
+    runApplication<com.saehyun.smonkey.SMonkeyApplication>(*args)
 }

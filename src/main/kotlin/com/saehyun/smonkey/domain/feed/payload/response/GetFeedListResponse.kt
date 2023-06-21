@@ -13,7 +13,7 @@ data class GetFeedListResponse(
         val likeCount: Int,
         val isLike: Boolean,
         val content: String,
-        val category: FeedType,
+        val category: com.saehyun.smonkey.domain.feed.enum.FeedType,
         val createdAt: LocalDateTime,
     ) {
         data class Writer(

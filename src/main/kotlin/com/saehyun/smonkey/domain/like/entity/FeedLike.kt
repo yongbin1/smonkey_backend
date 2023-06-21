@@ -18,5 +18,5 @@ class FeedLike(
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "feed_id")
-    var feed: Feed,
+    var feed: com.saehyun.smonkey.domain.feed.entity.Feed,
 )

@@ -22,7 +22,7 @@ import org.springframework.stereotype.Service
  */
 @Service
 class GetFeedService(
-    private val feedFacade: FeedFacade,
+    private val feedFacade: com.saehyun.smonkey.domain.feed.facade.FeedFacade,
     private val smonkeyFacade: SMonkeyFacade,
     private val userFacade: UserFacade,
     private val likeFacade: LikeFacade,
@@ -86,7 +86,7 @@ class GetFeedService(
 
         val feedList = feedFacade
             .getFeedAll()
-            .runIf(feedType != FeedType.ALL) {
+            .runIf(feedType != com.saehyun.smonkey.domain.feed.enum.FeedType.ALL) {
                 filter {
                     it.category == feedType
                 }

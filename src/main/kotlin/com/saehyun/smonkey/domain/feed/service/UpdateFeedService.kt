@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional
 
 @Service
 class UpdateFeedService(
-    private val feedFacade: FeedFacade,
+    private val feedFacade: com.saehyun.smonkey.domain.feed.facade.FeedFacade,
     private val userFacade: UserFacade
 ) {
 
@@ -25,7 +25,7 @@ class UpdateFeedService(
         val user = userFacade.getCurrentUser()
 
         if (feed.user != user) {
-            throw NotMyFeedException
+            throw com.saehyun.smonkey.domain.feed.exception.NotMyFeedException
         }
 
         feed.update(

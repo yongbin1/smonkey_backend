@@ -24,7 +24,7 @@ class LikeFacadeImpl(
         return feed != null
     }
 
-    override fun getLikeCount(feed: Feed): Int {
+    override fun getLikeCount(feed: com.saehyun.smonkey.domain.feed.entity.Feed): Int {
         return likeRepository.findByFeedId(feed.id)?.size ?: 0
     }
 

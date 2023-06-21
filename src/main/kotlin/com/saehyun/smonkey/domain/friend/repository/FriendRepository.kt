@@ -1,7 +1,7 @@
 package com.saehyun.smonkey.domain.friend.repository
 
-import com.saehyun.smonkey.domain.friend.entity.Friend
 import com.saehyun.smonkey.domain.friend.utils.FriendStatus
+import com.saehyun.smonkey.domain.friend.entity.Friend
 import org.springframework.data.repository.CrudRepository
 
 interface FriendRepository : CrudRepository<Friend, Long> {
