@@ -21,6 +21,14 @@ class SecurityConfig(
 ) {
 
     @Bean
+    fun webSecurityCustomizer(): WebSecurityCustomizer? {
+        return WebSecurityCustomizer { web: WebSecurity ->
+            web.ignoring()
+                .mvcMatchers("/swagger-ui/**", "/configuration/**", "/swagger-resources/**", "/v3/api-docs/**", "/webjars/**", "/webjars/springfox-swagger-ui/*.{js,css}", "/bus/v3/api-docs/**")
+        }
+    }
+
+    @Bean
     protected fun filterChain(http: HttpSecurity): SecurityFilterChain {
         http
             .cors().and()
@@ -29,7 +37,6 @@ class SecurityConfig(
             .authorizeRequests()
             .antMatchers("/user").permitAll()
             .antMatchers("/user/signin").permitAll()
-            .antMatchers("/swagger-ui/**").permitAll()
             .anyRequest().authenticated()
             .and()
             .apply(
