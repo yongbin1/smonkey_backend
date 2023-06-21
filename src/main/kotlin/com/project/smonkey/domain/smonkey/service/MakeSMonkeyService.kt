@@ -35,6 +35,10 @@ class MakeSMonkeyService(
                 name = request.name,
                 backgroundColor = request.backgroundColor,
                 point = DefaultPoint,
+                savePrice = 0,
+                spendPrice = 0,
+                noSmokingDate = 0,
+                smokingDate = 0,
             )
         )
 

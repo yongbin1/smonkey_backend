@@ -32,6 +32,10 @@ internal class SMonkeyFacadeImpl(
                 name = "no smonkey",
                 backgroundColor = "WHITE",
                 point = 0,
+                savePrice = 0,
+                spendPrice = 0,
+                noSmokingDate = 0,
+                smokingDate = 0
             )
     }
 }

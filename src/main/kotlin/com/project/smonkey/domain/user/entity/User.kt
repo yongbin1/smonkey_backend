@@ -18,6 +18,7 @@ data class User(
     val smokingDate: LocalDateTime,
     val noSmokingDate: LocalDateTime,
     val reason: String,
+    val cigaretteAmount: Int,
 ) {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -9,6 +9,10 @@ class SMonkey(
     name: String,
     backgroundColor: String,
     point: Int,
+    savePrice: Int,
+    spendPrice: Int,
+    noSmokingDate: Int,
+    smokingDate: Int,
 ) {
     @Id
     var userId = userId
@@ -23,6 +27,18 @@ class SMonkey(
     var point = point
         protected set
 
+    var savePrice = savePrice
+        protected set
+
+    var spendPrice = spendPrice
+        protected set
+
+    var noSmokingDate = noSmokingDate
+        protected set
+
+    var smokingDate = smokingDate
+        protected set
+
     fun updateColor(
         backgroundColor: String,
     ): SMonkey {
@@ -34,6 +50,34 @@ class SMonkey(
         point: Int,
     ): SMonkey {
         this.point = point
+        return this
+    }
+
+    fun addSavePrice(
+        price: Int,
+    ): SMonkey {
+        this.savePrice += price
+        return this
+    }
+
+    fun addSpendPrice(
+        price: Int,
+    ): SMonkey {
+        this.spendPrice += price
+        return this
+    }
+
+    fun updateNoSmokingDate(
+        date: Int,
+    ): SMonkey {
+        this.noSmokingDate += date
+        return this
+    }
+
+    fun updateSmokingDate(
+        date: Int,
+    ): SMonkey {
+        this.smokingDate += date
         return this
     }
 }

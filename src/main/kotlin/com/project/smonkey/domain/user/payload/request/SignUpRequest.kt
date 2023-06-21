@@ -13,4 +13,5 @@ data class SignUpRequest(
     val smokingDate: LocalDateTime,
     val noSmokingDate: LocalDateTime,
     val reason: String,
+    val cigaretteAmount: Int,
 )

@@ -8,4 +8,7 @@ data class GetSMonkeyResponse(
     val point: Int,
     val level: Int,
     val nextPoint: Int,
+    val savePrice: Int,
+    val spendPrice: Int,
+    val smokingDates: SMonkeyTimeResponse,
 )
