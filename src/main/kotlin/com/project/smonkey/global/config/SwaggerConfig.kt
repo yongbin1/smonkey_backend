@@ -18,7 +18,7 @@ class SwaggerConfig {
         .produces(getProduceContentTypes())
         .apiInfo(swaggerInfo())
         .select()
-        .apis(RequestHandlerSelectors.basePackage("com.saehyun.smonkey"))
+        .apis(RequestHandlerSelectors.basePackage("com.project.smonkey"))
         .paths(PathSelectors.any())
         .build()
         .useDefaultResponseMessages(false)
