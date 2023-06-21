@@ -46,4 +46,7 @@ object Dependencies {
     // configuration-processor
     const val CONFIGUATION_PROCESSOR = "org.springframework.boot:spring-boot-configuration-processor"
 
+    const val SWAGGER_UI = "io.springfox:springfox-swagger-ui:3.0.0"
+    const val SPRINGFOX_STARTER = "io.springfox:springfox-boot-starter:3.0.0"
+
 }

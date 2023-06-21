@@ -7,7 +7,7 @@ fun DependencyHandler.installDependencies(
     ktlint: Boolean = false,
     jackson: Boolean = true,
     jwt: Boolean = true,
-
+    swagger: Boolean = true,
 ) {
     if(spring) {
         implementation(Dependencies.SPRING_DATA_JPA)
@@ -33,6 +33,12 @@ fun DependencyHandler.installDependencies(
 
     if(jwt) {
         implementation(Dependencies.JWT)
+    }
+
+    if(swagger) {
+        implementation(Dependencies.SWAGGER_UI)
+        implementation(Dependencies.SPRINGFOX_STARTER)
+
     }
 }
 

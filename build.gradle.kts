@@ -31,6 +31,7 @@ dependencies {
         ktlint = true,
         jackson = true,
         jwt = true,
+        swagger = true,
     )
 
     implementation("io.github.microutils:kotlin-logging-jvm:2.1.21")
