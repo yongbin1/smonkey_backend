@@ -2,9 +2,12 @@ package com.project.smonkey.domain.journal.service
 
 import com.project.smonkey.domain.journal.domain.repository.JournalRepository
 import com.project.smonkey.domain.journal.presentation.dto.response.JournalListResponse
+import com.project.smonkey.domain.journal.presentation.dto.response.JournalResponse
 import com.project.smonkey.domain.user.facade.UserFacade
 import com.project.smonkey.global.payload.BaseResponse
 import org.springframework.stereotype.Service
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 import javax.transaction.Transactional
 
 @Service
@@ -15,25 +18,43 @@ class FindAllMonthJournalService(
 
     @Transactional
     fun execute(
+        year: Int,
         month: Int,
     ): BaseResponse<JournalListResponse> {
         val user = userFacade.getCurrentUser()
 
-        var days = 0
+        var day = 0
         if (month == 2) {
-            days = 27
+            day = 27
         } else {
-            days = if (month < 8) {
+            day = if (month < 8) {
                 if (month % 2 == 0) 30 else 31
             } else {
                 if (month % 2 == 0) 31 else 30
             }
         }
 
+        val startDate = LocalDate.of(year, month, 1)
+        val endDate = LocalDate.of(year, month, day)
+
+        val list = journalRepository.findAllByDateBetween(startDate, endDate)
+
         return BaseResponse(
             status = 200,
             message = "success find journal data",
-            content = null
+            content = JournalListResponse(
+                list = list.forEach { i ->
+                    if (i != null) {
+                        JournalResponse(
+                                title = i.title,
+                                content = i.content,
+                                date = i.date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd")),
+                                userName = i.author.name,
+                                smoking = i.smoking,
+                        )
+                    }
+                }
+            )
         )
     }
 

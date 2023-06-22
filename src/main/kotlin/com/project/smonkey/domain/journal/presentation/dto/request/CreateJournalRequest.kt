@@ -3,6 +3,7 @@ package com.project.smonkey.domain.journal.presentation.dto.request
 import com.project.smonkey.domain.journal.domain.Journal
 import com.project.smonkey.domain.user.entity.User
 import java.time.LocalDate
+import java.util.Date
 
 data class CreateJournalRequest(
     val title: String,
