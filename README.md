@@ -68,16 +68,16 @@ az redis create --name smonkey-redis --resource-group <resources 그룹 이름> 
 
           - name: make application.yml
             run: |
-                mkdir ./src/main/resources
-                cd ./src/main/resources
+                mkdir ./server/src/main/resources
+                cd ./server/src/main/resources
                 touch ./application.yml
                 echo "${{ secrets.APPLICATION }}" > ./application.yml
             shell: bash
 
           - name: Build with Gradle
             run: |
-                chmod +x ./gradlew
-                ./gradlew clean build
+                chmod +x ./server/gradlew
+                ./server/gradlew clean build
 
           - name: Upload artifact for deployment job
             uses: actions/upload-artifact@v2
