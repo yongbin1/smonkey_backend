@@ -1,7 +1,7 @@
 package com.project.smonkey.domain.journal.domain
 
 import com.project.smonkey.domain.user.entity.User
-import java.time.LocalDateTime
+import java.time.LocalDate
 import javax.persistence.Entity
 import javax.persistence.FetchType
 import javax.persistence.GeneratedValue
@@ -16,7 +16,7 @@ import javax.persistence.Table
 class Journal(
     title: String,
     content: String,
-    date: LocalDateTime,
+    date: LocalDate,
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "author_id")

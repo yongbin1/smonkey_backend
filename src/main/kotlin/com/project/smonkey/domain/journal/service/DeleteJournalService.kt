@@ -5,7 +5,7 @@ import com.project.smonkey.domain.journal.exception.NotMyJournalException
 import com.project.smonkey.domain.user.facade.UserFacade
 import com.project.smonkey.global.payload.BaseResponse
 import org.springframework.stereotype.Service
-import java.time.LocalDateTime
+import java.time.LocalDate
 
 @Service
 class DeleteJournalService(
@@ -14,7 +14,7 @@ class DeleteJournalService(
 ) {
 
     fun execute(
-        date: LocalDateTime
+        date: LocalDate
     ):BaseResponse<Unit> {
         val author = userFacade.getCurrentUser()
         val journal = journalRepository.getByDate(date)

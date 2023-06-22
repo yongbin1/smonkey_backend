@@ -6,7 +6,7 @@ import com.project.smonkey.domain.journal.presentation.dto.response.JournalRespo
 import com.project.smonkey.domain.user.facade.UserFacade
 import com.project.smonkey.global.payload.BaseResponse
 import org.springframework.stereotype.Service
-import java.time.LocalDateTime
+import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
 @Service
@@ -16,7 +16,7 @@ class FindJournalService(
 ) {
 
     fun execute(
-        date: LocalDateTime
+        date: LocalDate
     ): BaseResponse<JournalResponse> {
         val author = userFacade.getCurrentUser()
         val journal = journalRepository.getByDate(date)
@@ -31,7 +31,7 @@ class FindJournalService(
             content = JournalResponse(
                 title = journal.title,
                 content = journal.content,
-                date = journal.date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")),
+                date = journal.date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd")),
                 userName = journal.author.name
             )
         )

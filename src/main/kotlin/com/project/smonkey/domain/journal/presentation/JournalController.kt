@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.ResponseStatus
 import org.springframework.web.bind.annotation.RestController
-import java.time.LocalDateTime
+import java.time.LocalDate
 
 @Api(tags = ["금연 일지 API"], description = "금연 일지 API")
 @RestController
@@ -40,7 +40,7 @@ class JournalController(
     @ApiOperation(value = "금연 일지 가져오기")
     @GetMapping
     fun getJournal(
-        @RequestParam("date") date: LocalDateTime
+        @RequestParam("date") date: LocalDate
     ): BaseResponse<JournalResponse> {
         return findJournalService.execute(date)
     }
@@ -49,7 +49,7 @@ class JournalController(
     @DeleteMapping
     @ResponseStatus(HttpStatus.NO_CONTENT)
     fun deleteJournal(
-        @RequestParam("date") data: LocalDateTime
+        @RequestParam("date") data: LocalDate
     ): BaseResponse<Unit> {
         return deleteJournalService.execute(data)
     }
