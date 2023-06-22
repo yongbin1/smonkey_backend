@@ -37,17 +37,19 @@ class SwaggerConfig {
             "Bearer access_token", ApiKeyVehicle.HEADER, "Authorization", ",")
     }
 
-    private fun securityContext(): SecurityContext =
-        SecurityContext.builder()
-            .securityReferences(listOf(defaultAuth()))
-            .forPaths(PathSelectors.regex("/*"))
+    private fun securityContext(): SecurityContext? {
+        return SecurityContext.builder()
+            .securityReferences(defaultAuth())
             .build()
+    }
 
-    private fun defaultAuth(): SecurityReference =
-        SecurityReference("Authorization", arrayOf(AuthorizationScope("global", "accessEverything")))
-
-    private fun apiKey(): ApiKey = ApiKey("Authorization", "jwt", "header")
-
+    private fun defaultAuth(): List<SecurityReference?> {
+        val authorizationScope = AuthorizationScope("global", "accessEverything")
+        val authorizationScopes = arrayOfNulls<AuthorizationScope>(1)
+        authorizationScopes[0] = authorizationScope
+        return listOf(SecurityReference("Authorization", authorizationScopes))
+    }
+    private fun apiKey(): ApiKey { return ApiKey("Authorization", "Authorization", "header") }
     private fun swaggerInfo() = ApiInfoBuilder()
         .title("스몽키 API 문서")
         .description("배그 팀의 서버 스웨거 문서입니다.")
