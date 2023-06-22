@@ -6,8 +6,14 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc
 import springfox.documentation.builders.ApiInfoBuilder
 import springfox.documentation.builders.PathSelectors
 import springfox.documentation.builders.RequestHandlerSelectors
+import springfox.documentation.service.ApiKey
+import springfox.documentation.service.AuthorizationScope
+import springfox.documentation.service.SecurityReference
 import springfox.documentation.spi.DocumentationType
+import springfox.documentation.spi.service.contexts.SecurityContext
 import springfox.documentation.spring.web.plugins.Docket
+import springfox.documentation.swagger.web.ApiKeyVehicle
+import springfox.documentation.swagger.web.SecurityConfiguration
 
 @Configuration
 @EnableWebMvc
@@ -17,11 +23,30 @@ class SwaggerConfig {
         .consumes(getConsumeContentTypes())
         .produces(getProduceContentTypes())
         .apiInfo(swaggerInfo())
+        .securityContexts(listOf(securityContext()))
+        .securitySchemes(listOf(apiKey()))
         .select()
         .apis(RequestHandlerSelectors.basePackage("com.project.smonkey"))
         .paths(PathSelectors.any())
         .build()
         .useDefaultResponseMessages(false)
+
+    @Bean
+    fun security(): SecurityConfiguration {
+        return SecurityConfiguration(null, null, null, null,
+            "Bearer access_token", ApiKeyVehicle.HEADER, "Authorization", ",")
+    }
+
+    private fun securityContext(): SecurityContext =
+        SecurityContext.builder()
+            .securityReferences(listOf(defaultAuth()))
+            .forPaths(PathSelectors.regex("/*"))
+            .build()
+
+    private fun defaultAuth(): SecurityReference =
+        SecurityReference("Authorization", arrayOf(AuthorizationScope("global", "accessEverything")))
+
+    private fun apiKey(): ApiKey = ApiKey("Authorization", "jwt", "header")
 
     private fun swaggerInfo() = ApiInfoBuilder()
         .title("스몽키 API 문서")
