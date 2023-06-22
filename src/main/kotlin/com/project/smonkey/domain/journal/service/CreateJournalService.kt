@@ -6,6 +6,7 @@ import com.project.smonkey.domain.journal.presentation.dto.request.CreateJournal
 import com.project.smonkey.domain.user.facade.UserFacade
 import com.project.smonkey.global.payload.BaseResponse
 import org.springframework.stereotype.Service
+import javax.transaction.Transactional
 
 @Service
 class CreateJournalService(
@@ -13,6 +14,7 @@ class CreateJournalService(
     private val journalRepository: JournalRepository
 ) {
 
+    @Transactional
     fun execute(
         request: CreateJournalRequest
     ): BaseResponse<Unit> {

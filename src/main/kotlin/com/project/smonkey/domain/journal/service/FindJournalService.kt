@@ -8,6 +8,7 @@ import com.project.smonkey.global.payload.BaseResponse
 import org.springframework.stereotype.Service
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
+import javax.transaction.Transactional
 
 @Service
 class FindJournalService(
@@ -15,6 +16,7 @@ class FindJournalService(
     private val journalRepository: JournalRepository
 ) {
 
+    @Transactional
     fun execute(
         date: LocalDate
     ): BaseResponse<JournalResponse> {

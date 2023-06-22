@@ -6,6 +6,7 @@ import com.project.smonkey.domain.user.facade.UserFacade
 import com.project.smonkey.global.payload.BaseResponse
 import org.springframework.stereotype.Service
 import java.time.LocalDate
+import javax.transaction.Transactional
 
 @Service
 class DeleteJournalService(
@@ -13,6 +14,7 @@ class DeleteJournalService(
     private val journalRepository: JournalRepository
 ) {
 
+    @Transactional
     fun execute(
         date: LocalDate
     ):BaseResponse<Unit> {

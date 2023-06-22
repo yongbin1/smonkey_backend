@@ -6,6 +6,7 @@ import com.project.smonkey.domain.user.facade.UserFacade
 import com.project.smonkey.global.payload.BaseResponse
 import org.springframework.stereotype.Service
 import java.time.LocalDateTime
+import javax.transaction.Transactional
 
 @Service
 class SuccessSmokingService(
@@ -13,6 +14,7 @@ class SuccessSmokingService(
     private val sMonkeyFacade: SMonkeyFacade,
 ) {
 
+    @Transactional
     fun execute(): BaseResponse<Unit> {
         val user = userFacade.getCurrentUser()
 

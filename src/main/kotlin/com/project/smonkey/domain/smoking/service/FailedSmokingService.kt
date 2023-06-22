@@ -6,6 +6,7 @@ import com.project.smonkey.domain.user.facade.UserFacade
 import com.project.smonkey.global.payload.BaseResponse
 import org.springframework.stereotype.Service
 import java.time.LocalDateTime
+import javax.transaction.Transactional
 
 @Service
 class FailedSmokingService(
@@ -13,6 +14,7 @@ class FailedSmokingService(
     private val sMonkeyFacade: SMonkeyFacade,
 ) {
 
+    @Transactional
     fun execute(): BaseResponse<Unit> {
         val user = userFacade.getCurrentUser()
 
@@ -27,6 +29,10 @@ class FailedSmokingService(
 
         val now = LocalDateTime.now()
         sMonkey.updateSmokingDate((now.hour * 3600) + (now.minute * 60) + now.second)
+
+        sMonkey.updatePoint(
+            point = sMonkey.point - 240
+        )
 
         return BaseResponse(
             status = 200,
