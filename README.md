@@ -32,10 +32,10 @@ az login
 az webapp create --name smonkey-backend --resource-group <resources 그룹 이름>  --plan ASP-rghgsmonkey-8bac --runtime JAVA:17-java17
 
 # MySQL 리소스 생성
-az mysql server create --name smonkey-db --resource-group rg-hg-smonkey --location KoreaCentral --admin-user smonkey --admin-password "qpwoeirutyalzm12*" --sku-name GP_Gen5_2  --version 8.0
+az mysql server create --name smonkey-db --resource-group <resources 그룹 이름> --location KoreaCentral --admin-user smonkey --admin-password "qpwoeirutyalzm12*" --sku-name GP_Gen5_2  --version 8.0
 
 # Redis 리소스 생성
-az redis create --name smonkey-redis --resource-group rg-hg-smonkey --location KoreaCentral --sku "Premium" --vm-size P5 --minimum-tls-version 1.2 --redis-version 6.0
+az redis create --name smonkey-redis --resource-group <resources 그룹 이름> --location KoreaCentral --sku "Premium" --vm-size P5 --minimum-tls-version 1.2 --redis-version 6.0
 
 
 ```
