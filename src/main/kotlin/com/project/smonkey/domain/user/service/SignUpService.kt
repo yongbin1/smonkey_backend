@@ -1,5 +1,8 @@
 package com.project.smonkey.domain.user.service
 
+import com.project.smonkey.domain.smonkey.entity.SMonkey
+import com.project.smonkey.domain.smonkey.facade.SMonkeyFacade
+import com.project.smonkey.domain.smonkey.utils.DefaultPoint
 import com.project.smonkey.domain.user.entity.RefreshToken
 import com.project.smonkey.domain.user.entity.User
 import com.project.smonkey.domain.user.exception.UserAlreadyExistException
@@ -18,6 +21,7 @@ private const val SIGN_UP_MESSAGE = "sign up success"
 
 @Service
 class SignUpService(
+    private val sMonkeyFacade: SMonkeyFacade,
     private val userRepository: UserRepository,
     private val refreshTokenRepository: RefreshTokenRepository,
     private val jwtTokenProvider: JwtTokenProvider,
@@ -30,7 +34,7 @@ class SignUpService(
     fun signUp(request: SignUpRequest): BaseResponse<TokenResponse> {
         if (userFacade.getUserExist(request.accountId)) throw UserAlreadyExistException
 
-        val user = User(
+        var user = User(
             accountId = request.accountId,
             password = passwordEncoder.encode(request.password),
             name = request.name,
@@ -44,7 +48,20 @@ class SignUpService(
             cigaretteAmount = request.cigaretteAmount
         )
 
-        userRepository.save(user)
+        user = userRepository.save(user)
+
+        sMonkeyFacade.saveSMonkey(
+            SMonkey(
+                userId = user.id,
+                name = request.sMonkeyName,
+                backgroundColor = request.backgroundColor,
+                point = DefaultPoint,
+                savePrice = 0,
+                spendPrice = 0,
+                noSmokingDate = 0,
+                smokingDate = 0,
+            )
+        )
 
         val tokenResponse = jwtTokenProvider.getToken(
             accountId = user.accountId,
