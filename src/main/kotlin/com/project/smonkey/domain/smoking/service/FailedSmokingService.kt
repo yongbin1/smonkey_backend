@@ -18,7 +18,7 @@ class FailedSmokingService(
     fun execute(): BaseResponse<Unit> {
         val user = userFacade.getCurrentUser()
 
-        if (sMonkeyFacade.getSMonkeyExist(user.id)) {
+        if (!sMonkeyFacade.getSMonkeyExist(user.id)) {
             throw SMonkeyNotFoundException
         }
 
