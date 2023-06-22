@@ -1,6 +1,7 @@
 package com.project.smonkey.domain.user.entity
 
 import java.time.LocalDateTime
+import java.util.Date
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
 import javax.persistence.GenerationType
@@ -15,8 +16,8 @@ data class User(
     val age: Int,
     val amount: Int,
     val price: Int,
-    val smokingDate: LocalDateTime,
-    val noSmokingDate: LocalDateTime,
+    val smokingDate: Date,
+    val noSmokingDate: Date,
     val reason: String,
     val cigaretteAmount: Int,
 ) {
