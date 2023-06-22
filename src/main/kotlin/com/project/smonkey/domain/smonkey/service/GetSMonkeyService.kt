@@ -11,7 +11,6 @@ import com.project.smonkey.domain.smonkey.utils.Time
 import com.project.smonkey.domain.user.facade.UserFacade
 import com.project.smonkey.global.payload.BaseResponse
 import org.springframework.stereotype.Service
-import kotlin.math.roundToInt
 
 @Service
 class GetSMonkeyService(
@@ -49,7 +48,7 @@ class GetSMonkeyService(
             step = level.toStep(),
             point = point,
             nextPoint = nextPoint,
-            percentage = (((nextPoint - point) / nextPoint) * 100).toDouble().roundToInt(),
+            percentage = (((nextPoint - point) / nextPoint)).toDouble(),
             savePrice = smonkey.savePrice,
             spendPrice = smonkey.spendPrice,
             smokingDates = SMonkeyTimeResponse(
