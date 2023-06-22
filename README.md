@@ -88,6 +88,7 @@ az redis create --name smonkey-redis --resource-group rg-hg-smonkey --location K
    - 다시 마이크로소프트 애저 클라우드 홈페이지로 접속하여 MySQL에서 smonkey-db라는 이름으로 생성된 데이터베이스를 선택하고 데이터베이스의 서버 이름을 복사합니다.
    - 복사한 서버 이름을 다음 application.yml에 넣기 위해 가지고 있습니다.
    - 다시 마이크로소프트 애저 클라우드 홈페이지로 접속하여 Azure Cache for Redis에 smonkey-redis라는 이름으로 생성된 Redis를 선택하고 호스트 이름을 복사합니다.
+   - Redis 화면에서 포트 항목을 누르고 고급 설정에서 SSL을 통해서만 액세스 허용을 아니요로 변경한 후 비 SSL 포트를 6379로 설정하고 저장합니다.
    - 복사한 호스트 이름을 다음 application.yml에 넣기 위해 가지고 있습니다.
    - Redis 화면 왼쪽 메뉴바에 액세스 키 메뉴를 선택합니다.
    - 메뉴에 기본 액세스 키를 복사하여 application.yml에 넣기 위해 가지고 있습니다.
