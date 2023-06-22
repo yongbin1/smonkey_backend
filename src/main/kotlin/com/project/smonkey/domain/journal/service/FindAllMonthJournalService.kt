@@ -2,12 +2,10 @@ package com.project.smonkey.domain.journal.service
 
 import com.project.smonkey.domain.journal.domain.repository.JournalRepository
 import com.project.smonkey.domain.journal.presentation.dto.response.JournalListResponse
-import com.project.smonkey.domain.journal.presentation.dto.response.JournalResponse
 import com.project.smonkey.domain.user.facade.UserFacade
 import com.project.smonkey.global.payload.BaseResponse
 import org.springframework.stereotype.Service
 import java.time.LocalDate
-import java.time.format.DateTimeFormatter
 import javax.transaction.Transactional
 
 @Service
@@ -43,17 +41,7 @@ class FindAllMonthJournalService(
             status = 200,
             message = "success find journal data",
             content = JournalListResponse(
-                list = list.forEach { i ->
-                    if (i != null) {
-                        JournalResponse(
-                                title = i.title,
-                                content = i.content,
-                                date = i.date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd")),
-                                userName = i.author.name,
-                                smoking = i.smoking,
-                        )
-                    }
-                }
+                list = list
             )
         )
     }
