@@ -135,7 +135,7 @@ jwt:
 ```
 gh auth login
 
-gh workflow run "Smonkey CI/CD" --repo <Github ID>/<리포지토리 이름>
+gh workflow run "Smonkey CI/CD" --repo <포크한 사람의 Github ID>/<포크한 리포지토리 이름>
 ```
 
 6. 마이크로소프트 애저 클라우드 홈페이지에 접속하여 App Services에 smonkey-backend를 클릭하여 기본 도메인을 복사합니다.
