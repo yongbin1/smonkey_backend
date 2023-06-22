@@ -5,6 +5,22 @@
 - Azure CLI
 - Github CLI
 
+#### Azure CLI 설치 방법
+mac os - https://learn.microsoft.com/ko-kr/cli/azure/install-azure-cli-macos   
+window - https://learn.microsoft.com/ko-kr/cli/azure/install-azure-cli-windows?tabs=azure-cli
+
+#### Github CLI 설치 방법
+mac os
+```
+$ brew install gh
+```
+
+window
+```
+$ scoop bucket add github-gh https://github.com/cli/scoop-gh.git
+$ scoop install gh
+```
+
 ## 순서
 
 1. 자신의 깃허브 계정으로 이 레포지토리를 포크합니다.
